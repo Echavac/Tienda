@@ -31,12 +31,14 @@ public class  Cliente implements Serializable {
     public Cliente() {
     }
 
-    public Cliente(String nombre, String apellidos, String correo, String telefono) {
+    public Cliente(Long idCliente, String nombre, String apellidos, String correo, String telefono) {
+        this.idCliente = idCliente;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.telefono = telefono;
     }
-    
+
+  
     
 }

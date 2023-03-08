@@ -16,8 +16,9 @@
         <p>Apellidos: <span th:text="${cliente.apellidos}"></span></p>
         <p>Correo: <span th:text="${cliente.correo}"></span></p>
         <p>Telefono: <span th:text="${cliente.telefono}"></span></p>-->
-        
-       <h1>Lista de Clientes</h1>
+        <header th:replace="layout/plantilla :: header" />
+       <h2>Lista de Clientes</h2>
+       <a th:href="@{/nuevoCliente}">Nuevo Cliente</a><br /><br />
        <div th:if="${clientes != null and ! clientes.empty}"></div>
        <table border="1">
            <thead>
@@ -25,6 +26,7 @@
            <th>Apellidos</th>
            <th>Correo</th>
            <th>Teléfono</th>
+           <th colspan="2">Acciones</th>
            </thead>
            <tbody>
                <tr th:each="item : ${cliente}">
@@ -32,11 +34,13 @@
                    <td th:text="${item.apellidos}"></td>
                    <td th:text="${item.correo}"></td>
                    <td th:text="${item.telefono}"></td>
+                   <td><a th:href="@{/modificarCliente/} + ${item.idCliente}">Modificar<a/></td>
+                   <td><a th:href="@{/eliminarCliente/} + ${item.idCliente}">Eliminar<a/></td>
                </tr>
            </tbody>
        </table> 
         
        
-       
+       <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
