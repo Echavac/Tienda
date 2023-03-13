@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>TODO supply a title</title>
+        <title>Categoria</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
         <header th:replace="layout/plantilla :: header" />
-        <h2>Articulos diponibles</h2>
+        <h2>Lista de Categorias</h2>
+        <a th:href="@{/categoria/nuevo}">Nueva Categoria</a>
         <br />
         <br />
         <div class="contenido">
-            <div th:if="${articulo != null and !articulo.empty}">
+            <div th:if="${categorias != null and !categorias.empty}">
                 <table border="1">
                     <thead>
                     <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
-                </thead>
+                    <th>Activo</th>
+                    </thead>
                     <tbody>
-                        <tr th:each="item : ${cliente}">
+                        <tr th:each="item : ${categorias}">
                             <td th:text="${item.descripcion}"></td>
-                            <td th:text="${#number.formatDecimal(item.precio, 3, 2)}"></td>
-                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}">Comprar<a/></td>
+                            <td><input type="checkbox" name="activo" th:cheked="${item.activo}" disabled="true"></td>
+                            <td><a th:href="@{/categoria/modificar/} + ${item.idCliente}">Modificar<a/></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${item.idCliente}">Eliminar<a/></td>
                         </tr>
                     </tbody>
                 </table> 
             </div>  
-            <div th:if="${articulo == null or articulo.empty}">
-                La lista de articulo esta vacia.....
+            <div th:if="${categorias == null or categorias.empty}">
+                La lista de categorias esta vacia.....
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer" />

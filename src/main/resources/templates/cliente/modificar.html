@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Modificar Cliente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <div class="contenido">
+            <h2>Datos del cliente</h2>
+            <a th:href="@{/cliente/listado}">Regresar</a>
+            <br />
+            <br />
+
+            <form th:action="@{/cliente/guardar}"
+                  method="POST"
+                  th:object="${cliente}">
+                <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+                <label for="nombre">Nombre:</label><br/>
+                <input type="text" id="nombre" name="nombre" th:field="*{nombre}"/>
+                <br/>
+                <label for="apellidos">Apellidos:</label><br/>
+                <input type="text" id="apellidos" name="apellidos" th:field="*{apellidos}"/>
+                <br/>
+                <label for="correo">Correo:</label><br/>
+                <input type="text" id="correo" name="correo" th:field="*{correo}"/>
+                <br/>
+                <label for="telefono">Teléfono:</label><br/>
+                <input type="text" id="telefono" name="telefono" th:field="*{telefono}"/>
+                <br/>
+                <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/>
+                <label for="limite">Limite de Credito:</label><br/>
+                <input type="text" id="limite" name="limite" th:field="*{credito.limite}"/><br/>
+                <br/>
+                <input type="submit" name="guardar" values="Guardar" />  
+            </form>
+        </div>
+
+        <footer th:replace="layout/plantilla :: footer" />
+    </body>
+</html>

@@ -13,6 +13,8 @@ import lombok.Data;
 @Table(name="categoria")
 public class Categoria {
     
+     private static long serialVersionUID = 1L;
+     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCategoria;
