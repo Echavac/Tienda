@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CategoriaServiceImpl implements CategoriaService {
     
      @Autowired
-    CategoriaDao categoriaDao;
+     private CategoriaDao categoriaDao;
 
     @Override
     @Transactional(readOnly = true)

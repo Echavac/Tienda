@@ -1,5 +1,3 @@
-
-
 package com.Tienda_1Q2023.service;
 
 import com.Tienda_1Q2023.dao.ArticuloDao;
@@ -11,9 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ArticuloServiceImpl implements ArticuloService {
-    
-     @Autowired
-    ArticuloDao articuloDao;
+    @Autowired
+    private ArticuloDao articuloDao;
 
     @Override
     @Transactional(readOnly = true)

@@ -4,6 +4,7 @@
  */
 package com.Tienda_1Q2023.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,18 +19,18 @@ import lombok.Data;
 @Entity
 @Table(name="cliente")
 public class  Cliente implements Serializable {
-    
-    private static long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long idCliente;
-   private String nombre;
-   private String apellidos;
-   private String correo;
-   private String telefono;
+    @Column(name = "id_cliente")
+    private Long idCliente;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String telefono;
    
-   @JoinColumn(name="id_cliente", referencedColumnName ="id_credito")
+   @JoinColumn(name="id_credito", referencedColumnName ="id_credito")
    @ManyToOne
    private Credito credito;
    

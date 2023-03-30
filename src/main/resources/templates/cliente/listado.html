@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Cliente</title>
+        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
@@ -9,37 +9,39 @@
     <body>
 
         <header th:replace="layout/plantilla :: header" />
-        <h2>Lista de Clientes</h2>
-        <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
-        <br />
-        <br />
         <div class="contenido">
-            <div th:if="${clientes != null and !clientes.empty}">
+            <h2>Lista de Clientes</h2>
+            <a th:href="@{/cliente/nuevo}">Nuevo cliente</a>
+            <br />
+            <br />
+            <div th:if="${clientes !=null and !clientes.empty}">
                 <table border="1">
                     <thead>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Limite</th>
-                    
-                    <th colspan="2">Acciones</th>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellidos</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Limite</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="item : ${cliente}">
+                        <tr th:each="item : ${clientes}">
                             <td th:text="${item.nombre}"></td>
                             <td th:text="${item.apellidos}"></td>
                             <td th:text="${item.correo}"></td>
                             <td th:text="${item.telefono}"></td>
-                            <td th:text="${#number.formatDecimal(item.credito.limite, 3, 2)}"></td>
-                            <td><a th:href="@{/cliente/nuevo/} + ${item.idCliente}">Modificar<a/></td>
-                            <td><a th:href="@{/cliente/eliminar/} + ${item.idCliente}">Eliminar<a/></td>
+                            <td th:text="${#numbers.formatDecimal(item.credito.limite, 3, 2)}"></td>
+                            <td><a th:href="@{/cliente/modificar/} + ${item.idCliente}">Modificar</a></td>
+                            <td><a th:href="@{/cliente/eliminar/} + ${item.idCliente}">Eliminar</a></td>
                         </tr>
                     </tbody>
-                </table> 
-            </div>  
-            <div th:if="${cliente == null or cliente.empty}">
-                La lista de clientes esta vacia.....
+                </table>
+            </div>
+            <div th:if="${clientes == null or clientes.empty}">
+                La lista de clientes esta vacia...
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer" />

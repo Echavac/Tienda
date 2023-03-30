@@ -35,9 +35,8 @@ public class ClienteServiceImpl implements ClienteService {
     public void save(Cliente cliente) {
         Credito credito = cliente.getCredito();
         credito = creditoDao.save(credito);
-        
         cliente.setCredito(credito);
-       clienteDao.save(cliente);
+        clienteDao.save(cliente);
     }
 
     @Override

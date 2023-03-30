@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.2</version>
+        <version>3.0.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.Tienda_1Q2023</groupId>
@@ -60,6 +60,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>${spring.boot.mainClass}</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

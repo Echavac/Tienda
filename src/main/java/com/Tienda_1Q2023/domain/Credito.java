@@ -13,12 +13,11 @@ import lombok.Data;
 @Entity
 @Table(name = "credito")
 public class Credito implements Serializable {
-    
-     private static long serialVersionUID = 1L;
+    private static long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCredito")
+    @Column(name = "id_credito")
     private Long idCredito;
     private double limite;
 

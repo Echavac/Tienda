@@ -7,28 +7,30 @@
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header" />
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
         <h2>Lista de Articulos</h2>
         <a th:href="@{/articulo/nuevo}">Nuevo Articulo</a>
         <br />
         <br />
-        <div class="contenido">
             <div th:if="${articulos != null and !articulos.empty}">
                 <table border="1">
                     <thead>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Existencia</th>
-                    <th>Activo</th>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Existencias</th>
+                            <th>Activa</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr th:each="item : ${articulos}">
                             <td th:text="${item.descripcion}"></td>
-                            <td th:text="${#number.formatDecimal(item.precio, 3, 2)}"></td>
-                            <td th:text="${item.existencia}"></td>
-                            <td><input type="checkbox" name="activo" th:cheked="${item.activo}" disabled="true"></td>
-                            <td><a th:href="@{/articulo/modificar/} + ${item.idCliente}">Modificar<a/></td>
-                            <td><a th:href="@{/articulo/eliminar/} + ${item.idCliente}">Eliminar<a/></td>
+                            <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}" style="text-align: right"></td>
+                            <td th:text="${item.existencias}" style="text-align: center"></td>
+                            <td><input type="checkbox" name="activa" th:cheked="${item.activo}" disabled="true"></td>
+                            <td><a th:href="@{/articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>
+                            <td><a th:href="@{/articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>
                         </tr>
                     </tbody>
                 </table> 
@@ -37,7 +39,6 @@
                 La lista de articulos esta vacia.....
             </div>
         </div>
-     
-        <footer th:replace="layout/plantilla :: footer" />
+     <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>
