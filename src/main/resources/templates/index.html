@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
     </head>
     <body>
-
-        <header th:replace="layout/plantilla :: header" />
-        <h2>Articulos diponibles</h2>
-        <br />
-        <br />
+        <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
+            <h2 th:text="#{index.titulo}">Articulos diponibles</h2>
+            <br />
             <div th:if="${articulo != null and !articulo.empty}">
                 <table border="1">
                     <thead>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
-                </thead>
+                        <tr> 
+                            <th th:text="#{articulo.descripcion}">Descripción</th>
+                            <th th:text="#{articulo.precio}">Precio</th>
+                            <th th:text="#{articulo.comprar}">Comprar</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr th:each="item : ${cliente}">
+                        <tr th:each="item : ${articulos}">
                             <td th:text="${item.descripcion}"></td>
                             <td th:text="${#number.formatDecimal(item.precio, 3, 2)}"></td>
-                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}">Comprar<a/></td>
+                            <td><a th:href="@{/carrito/agregar/} + ${item.idArticulo}"
+                                   th:text="#{accion.agregar}">Agregar</a></td>
                         </tr>
                     </tbody>
                 </table> 
-            </div>  
+            </div> 
             <div th:if="${articulo == null or articulo.empty}">
-                La lista de articulo esta vacia.....
+                [[#{articulo.no_mostrar}]]
             </div>
         </div>
-        <footer th:replace="layout/plantilla :: footer" />
+        <footer th:replace="layout/plantilla :: footer"/>
     </body>
 </html>

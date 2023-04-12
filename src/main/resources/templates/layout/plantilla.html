@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>TODO supply a title</title>
+    <head th:fragment="head">
+        <title>TechShop</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+        <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
         <header th:fragment="header" class="header">
-            <nav class="nav">
-                <a href="@{/}" class="logo nav-link">TechShop</a>
-                <ul class="nav-menu">
-                    <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}">Clientes</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/categoria/listado}">Categorias</a>
-                    </li>
-                    <li class="nav-menu-item">
-                        <a class="nav-menu-link nav-link" th:href="@{/articulo/listado}">Articulos</a>
-                    </li>
-                </ul>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+                <div class="container">
+                    <a href="@{/}" class="navbar-brand">TechShop</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-bs-target="navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>   
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav">
+                            <li class="nav-item px-2">
+                                <a class="nav-menu-link nav-link" th:href="@{/cliente/listado}"
+                                   th:text="#{plantilla.clientes}">Clientes</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="navlink" th:href="@{/categoria/listado}"
+                                   th:text="#{plantilla.categorias}">Categorias</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" th:href="@{/articulo/listado}"
+                                   th:text="#{plantilla.articulos}">Articulos</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item mr-3">
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-user"></i>
+                                    <span th:text="#{plantilla.bienvenido}">Bienvenido</span>
+                                    <span sec:authentication="name">Usuario</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <form method="POST" th:action="@{/logout}">
+                                    <a href="#" onclick="this.parentNode.submit();" class="nav-link">
+                                        <i class=" fas fa-user-times"></i> [[#{plantilla.logout}]] 
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </header>
-        <footer th:fragment="footer" class="footer">
-            <p>&COPY; Derechos Reservados 2023</p>
+        <footer th:fragment="footer" class="footer"/>
+            <p>&COPY; [[#{plantilla.derechos}]]
+                <a th:href="@{/(lang=es)}">ES</a>
+                <a th:href="@{/(lang=en)}">EN</a>
+            </p>
         </footer>
     </body>
 </html>

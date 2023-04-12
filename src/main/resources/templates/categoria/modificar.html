@@ -9,8 +9,8 @@
     <body>
          <header th:replace="layout/plantilla :: header"/>
          <div class="contenido">
-            <h2>Datos de la Categoria</h2>
-            <a th:href="@{/categoria/listado}">Regresar</a>
+            <h2 th:text="#{categoria.datos}">Datos de la Categoria</h2>
+            <a th:href="@{/categoria/listado}" th:text="#{accion.regresar}">Regresar</a>
             <br />
             <br />
 
@@ -20,13 +20,13 @@
                 
                 <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
 
-                <label for="descripcion">Descripción:</label><br/>
+                <label for="descripcion" th:text="#{categoria.descripcion}">Descripción:</label><br/>
                 <input type="text" name="descripcion" th:field="*{descripcion}"/>
                 <br/>
-                <label for="activo">Activo:</label><br/>
+                <label for="activo" th:text="#{categoria.activo}">Activo:</label><br/>
                 <input type="checkbox" name="activo" th:field="*{activo}"/><br/>
                 <br/>
-                <input type="submit" name="guardar" value="Guardar"/>    
+                <input type="submit" name="guardar" th:value="#{accion.guardar}"/>    
             </form>
         </div>
        <footer th:replace="layout/plantilla :: footer"/>

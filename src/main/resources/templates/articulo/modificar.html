@@ -9,8 +9,8 @@
     <body>
         <header th:replace="layout/plantilla :: header"/>
          <div class="contenido">
-            <h2>Datos del Articulo</h2>
-            <a th:href="@{/articulo/listado}">Regresar</a>
+            <h2 th:text="#{articulo.datos}">Datos del Articulo</h2>
+            <a th:href="@{/articulo/listado}" th:text="#{accion.regresar}">Regresar</a>
             <br />
             <br />
             <form th:action="@{/articulo/guardar}"
@@ -25,24 +25,24 @@
                 </select>
                 <br/>
                 <br/>
-                <label for="descripcion">Descripción:</label><br/>
+                <label for="descripcion" th:text="#{articulo.descripcion}">Descripción:</label><br/>
                 <input type="text" name="descripcion" th:field="*{descripcion}"/>
                 <br/>
-                <label for="detalle">Detalle:</label><br/>
+                <label for="detalle" th:text="#{articulo.detalle}">Detalle:</label><br/>
                 <input type="text" name="detalle" th:field="*{detalle}"/>
                 <br/>
                 <textarea name="detalle" th:field="*{detalle}" rows="6" cols="50"/>
                 <br/>
-                <label for="precio">Precio:</label><br/>
+                <label for="precio" th:text="#{articulo.precio}">Precio:</label><br/>
                 <input type="number" name="precio" th:field="*{precio}"/>
                 <br/>
-                <label for="existencia">Existencias:</label><br/>
+                <label for="existencia" th:text="#{articulo.exixtencia}">Existencias:</label><br/>
                 <input type="number" name="existencias" th:field="*{existencias}"/>
                 <br/>
-                <label for="activo">Activo:</label><br/>
+                <label for="activo" th:text="#{articulo.activo}">Activo:</label><br/>
                 <input type="checkbox" name="activo" th:field="*{activo}"/><br/>
                 <br/>
-                <input type="submit" name="guardar" value="Guardar" />  
+                <input type="submit" name="guardar" th:value="#{accion.guardar}"/>  
             </form>
         </div>
       <footer th:replace="layout/plantilla :: footer"/>
